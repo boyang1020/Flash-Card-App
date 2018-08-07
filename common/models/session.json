@@ -1,0 +1,24 @@
+{
+  "name": "session",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "cards": {
+      "type": "hasMany",
+      "model": "card",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -34,5 +34,17 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "user": {
+    "dataSource": "db",
+    "public": true
+  },
+  "session": {
+    "dataSource": "db",
+    "public": true
+  },
+  "card": {
+    "dataSource": "db",
+    "public": true
   }
 }
