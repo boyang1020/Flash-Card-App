@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import RegisterReducer from './containers/Register/RegisterReducer';
+import RegisterReducer from './containers/RegisterContainer/RegisterReducer';
 
 const rootReducer = combineReducers({
-    registerData: RegisterReducer
+    search: RegisterReducer
 });
 
 export default rootReducer;

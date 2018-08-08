@@ -29,9 +29,9 @@ export function passwordEntry(text) {
     }
 }
 
-export function signUpEntry(registerObj, navigate) {
+export function registerEntry(registerObj, navigate) {
     return {
         type: 'SIGN_UP_ENTRY',
-        payload: registerInfo
+        payload: registerObj
     }
 }
