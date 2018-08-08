@@ -13,34 +13,43 @@ import { FormLabel, FormInput, Button, FormValidationMessage, Icon } from 'react
 // import { MonoText } from '../components/StyledText';
 
 export default class LoginPage extends React.Component {
-constructor(props) {
-  super(props);
+  constructor(props) {
+    super(props);
 
-  this.emailLogin = this.emailLogin.bind(this);
-  this.passwordLogin = this.passwordLogin.bind(this);
-  this.loginButton = this.loginButton.bind(this);
+    this.emailLogin = this.emailLogin.bind(this);
+    this.passwordLogin = this.passwordLogin.bind(this);
+    this.loginButton = this.loginButton.bind(this);
 
-}
+  }
   emailLogin(text) {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch(emailInput(text));
   }
 
   passwordLogin(text) {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch(passwordInput(text));
   }
-  
-  loginButton() {}
+
+  loginButton() { }
 
   render() {
     return (
       <View style={styles.container}>
+        {/* <Image
+
+          source={
+            __DEV__
+              ? require('.../assets/images/robot-dev.png')
+              : require('.../assets/images/robot-prod.png')
+          }
+          style={styles.welcomeImage}
+        /> */}
         <View style={styles.formContainer}>
           <FormLabel>Email</FormLabel>
-          <FormInput onChangeText={this.emailLogin}/>
+          <FormInput onChangeText={this.emailLogin} />
           <FormLabel>Password</FormLabel>
-          <FormInput onChangeText={this.passwordLogin}/>
+          <FormInput onChangeText={this.passwordLogin} />
         </View>
         <Button style={styles.button}
           onPress={this.loginButton}
@@ -54,7 +63,7 @@ constructor(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#DCDCDC',
+    backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 300,
     // paddingBottom: 300

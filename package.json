@@ -19,9 +19,13 @@
     "loopback-component-explorer": "^6.0.0",
     "react": "^16.4.2",
     "react-native": "^0.56.0",
+<<<<<<< Updated upstream
     "react-native-elements": "^0.19.1",
     "react-redux": "^5.0.7",
     "redux-promise-middleware": "^5.1.1",
+=======
+    "redux": "^4.0.0",
+>>>>>>> Stashed changes
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0"
   },
