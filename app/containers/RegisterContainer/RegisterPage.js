@@ -63,8 +63,6 @@ class RegisterContainer extends React.Component {
 
 
     render() {
-        // const { first_name, last_name, email, password, user } = this.props;
-        // const { navigate } = this.props.navigation;
 
         return (
             <ScrollView keyboardDismissMode='on-drag'>

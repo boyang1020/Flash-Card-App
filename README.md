@@ -35,3 +35,6 @@ npm install --save redux
 
 Expo
 npm install expo-cli --global
+
+React Native Elements
+npm install --save react-native-elements
