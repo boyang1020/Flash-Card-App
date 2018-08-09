@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   StyleSheet,
+  Image,
   Text,
   View,
   TextInput,
@@ -16,6 +17,7 @@ import {
   FormValidationMessage,
   Icon
 } from "react-native-elements";
+import Origin from '../../assets/images/originLogo.png';
 import { firstNameEntry, lastNameEntry, emailEntry, passwordEntry, registerEntry } from "./RegisterAction";
 
 class RegisterContainer extends React.Component {
@@ -77,8 +79,13 @@ class RegisterContainer extends React.Component {
   render() {
     console.log(this.props.first_name);
     return (
-      <ScrollView keyboardDismissMode="on-drag">
+  
+        
         <View style={styles.container}>
+         <Image
+          source={Origin}
+          style={styles.originImage}
+        />
           <View style={styles.formContainer}>
             <FormLabel>FIRST NAME </FormLabel>
             <FormInput onChangeText={this.handleFirstNameInput} />
@@ -96,14 +103,20 @@ class RegisterContainer extends React.Component {
           <Button
             style={styles.button}
             onPress={this.handleRegisterSubmission}
+            color='white'
             backgroundColor={"#346abb"}
             borderRadius={3}
-            large
+        
             icon={{ name: "sign-in", type: "font-awesome" }}
             title="REGISTER"
           />
+          
+          <Text style={styles.text}>
+          @Aggressive Squid Inc.
+          </Text>
         </View>
-      </ScrollView>
+    
+     
     );
   }
 }
@@ -111,20 +124,33 @@ class RegisterContainer extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#DCDCDC",
+    backgroundColor: "white",
     alignItems: "center",
-    paddingTop: 30,
-    paddingBottom: 300
+    paddingTop: 10,
+    // paddingBottom: 300
   },
   button: {
     marginTop: 55,
     marginBottom: 20,
-    width: 320
+    width: 320,
+    shadowColor: '#000',
+       shadowOffset: { width: 3, height: 4 },
+       shadowOpacity: 0.5,
   },
 
   formContainer: {
     width: 350
     // padding: 50
+  },
+  originImage: {
+    width: 180,
+    height: 160,
+    resizeMode: 'contain',
+    marginTop: 30,
+    paddingBottom: 30,
+  },
+  text:{
+    marginTop:0,
   },
   switchToLogin: {}
 });

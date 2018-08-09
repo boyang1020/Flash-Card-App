@@ -34,16 +34,20 @@ export default class LoginPage extends React.Component {
           style={styles.originImage}
         />
         <View style={styles.formContainer}>
-          <FormLabel>Email</FormLabel>
+          <FormLabel>EMAIL</FormLabel>
           <FormInput onChangeText={this.emailLogin} />
-          <FormLabel>Password</FormLabel>
+          <FormLabel>PASSWORD</FormLabel>
           <FormInput onChangeText={this.passwordLogin} secureTextEntry={true}/>
         </View>
         <Button style={styles.button}
           onPress={this.loginButton}
           color='white'
           backgroundColor={"#346abb"}
+          borderRadius={3}
           title='Login' />
+            <Text style={styles.text}>
+          @Aggressive Squid Inc.
+          </Text>
       </View>
     )
   }
@@ -60,7 +64,10 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 55,
     marginBottom: 20,
-    width: 320
+    width: 320,
+    shadowColor: '#000',
+       shadowOffset: { width: 3, height: 4 },
+       shadowOpacity: 0.5,
   },
 
   formContainer: {
@@ -71,6 +78,10 @@ const styles = StyleSheet.create({
     width: 180,
     height: 160,
     resizeMode: 'contain',
+    marginTop: 30,
     paddingBottom: 30,
-  }
+  },
+  text:{
+    marginTop:0,
+  },
 });
