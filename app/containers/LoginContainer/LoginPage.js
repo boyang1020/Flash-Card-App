@@ -37,7 +37,7 @@ export default class LoginPage extends React.Component {
           <FormLabel>Email</FormLabel>
           <FormInput onChangeText={this.emailLogin} />
           <FormLabel>Password</FormLabel>
-          <FormInput onChangeText={this.passwordLogin} />
+          <FormInput onChangeText={this.passwordLogin} secureTextEntry={true}/>
         </View>
         <Button style={styles.button}
           onPress={this.loginButton}
