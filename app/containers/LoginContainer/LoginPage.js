@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { WebBrowser } from 'expo';
+import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import { FormLabel, FormInput, Button, FormValidationMessage, Icon } from 'react-native-elements';
 // import { MonoText } from '../components/StyledText';
+import Origin from '../../assets/images/originLogo.png'
+import { emailEntry, passwordEntry } from './LoginActions';
 
 export default class LoginPage extends React.Component {
   constructor(props) {
@@ -23,12 +16,12 @@ export default class LoginPage extends React.Component {
   }
   emailLogin(text) {
     const { dispatch } = this.props;
-    dispatch(emailInput(text));
+    dispatch(emailEntry(text));
   }
 
   passwordLogin(text) {
     const { dispatch } = this.props;
-    dispatch(passwordInput(text));
+    dispatch(passwordEntry(text));
   }
 
   loginButton() { }
@@ -36,15 +29,10 @@ export default class LoginPage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Image
-
-          source={
-            __DEV__
-              ? require('.../assets/images/robot-dev.png')
-              : require('.../assets/images/robot-prod.png')
-          }
-          style={styles.welcomeImage}
-        /> */}
+        <Image
+          source={Origin}
+          style={styles.originImage}
+        />
         <View style={styles.formContainer}>
           <FormLabel>Email</FormLabel>
           <FormInput onChangeText={this.emailLogin} />
@@ -65,7 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    paddingTop: 300,
+    paddingTop: 10,
     // paddingBottom: 300
   },
   button: {
@@ -78,16 +66,9 @@ const styles = StyleSheet.create({
     width: 350
     // padding: 50
   },
-  switchToLogin: {
+  originImage: {
+    width: 180,
+    height: 160,
+    resizeMode: 'contain',
   }
 });
-
-function mapStoreToProps(store) {
-  return {
-    firstName: store.registerData.first_name,
-    lastName: store.registerData.last_name,
-    email: store.registerData.email,
-    password: store.registerData.password,
-    user: store.registerData.user
-  };
-}

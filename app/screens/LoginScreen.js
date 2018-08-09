@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import LoginPage from '../containers/LoginContainer';
-export default class RegisterScreen extends React.Component {
+export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'Login',
   };
