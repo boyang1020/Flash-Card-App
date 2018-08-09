@@ -1,5 +1,4 @@
 // Import { loadingScreen } from "../LoginContainer/loginActions";
-
 const defaultState = {
   first_name: '',
   last_name: '',
