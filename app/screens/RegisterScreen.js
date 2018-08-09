@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import RegisterPage from '../containers/RegisterContainer';
 export default class RegisterScreen extends React.Component {
   static navigationOptions = {
-    title: 'Register',
+    header: null,
   };
 
   render() {
