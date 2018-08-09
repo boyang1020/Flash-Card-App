@@ -42,6 +42,7 @@ export default class LoginPage extends React.Component {
         <Button style={styles.button}
           onPress={this.loginButton}
           color='white'
+          backgroundColor={"#346abb"}
           title='Login' />
       </View>
     )
@@ -70,5 +71,6 @@ const styles = StyleSheet.create({
     width: 180,
     height: 160,
     resizeMode: 'contain',
+    paddingBottom: 30,
   }
 });
