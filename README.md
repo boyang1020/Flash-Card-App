@@ -33,5 +33,13 @@ npm install --save react-navigation
 Redux
 npm install --save redux
 
+Redux Promiste Middleware
+npm install redux-promise-middleware
+
 Expo
 npm install expo-cli --global
+
+React Native Elements
+npm install --save react-native-elements
+
+React

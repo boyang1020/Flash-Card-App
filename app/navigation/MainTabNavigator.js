@@ -1,11 +1,11 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
-
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import LoginScreen from '../screens/LoginScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -25,16 +25,30 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const LoginStack = createStackNavigator({
+  Login: LoginScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+LoginStack.navigationOptions = {
+  tabBarLabel: 'Login',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={Platform.OS === 'ios' ? `ios-log-in${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
+
+const RegisterStack = createStackNavigator({
+  Register: RegisterScreen,
+});
+
+RegisterStack.navigationOptions = {
+  tabBarLabel: 'Register',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-create${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
 };
@@ -55,6 +69,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  LoginStack,
+  RegisterStack,
   SettingsStack,
 });

@@ -22,10 +22,12 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
+          
+      
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/robot-dev.png')
+                  ? require('../assets/images/originLogo.png')
                   : require('../assets/images/robot-prod.png')
               }
               style={styles.welcomeImage}
@@ -35,7 +37,7 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>"HELLO WORLD"</Text>
+            <Text style={styles.getStartedText}>" HELLO WORLD"</Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
