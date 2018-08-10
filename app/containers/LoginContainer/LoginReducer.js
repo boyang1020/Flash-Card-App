@@ -1,4 +1,3 @@
-// Import { loadingScreen } from "../LoginContainer/loginActions";
 const defaultState = {
   email: '',
   password: ''

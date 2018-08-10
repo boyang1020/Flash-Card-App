@@ -54,17 +54,7 @@ class RegisterContainer extends React.Component {
   handleRegisterSubmission() {
     console.log(this.handleRegisterSubmission)
     const { dispatch, first_name, last_name, email, password } = this.props;
-    // const { navigate } = this.props.navigation;
-
-    // if (first_name == "" || last_name == "" || email == "" || password == "") {
-    //   Alert.alert("Form Error", "Complete all fields to submit", [
-    //     {
-    //       text: "OK",
-    //       onPress: null,
-    //       style: "cancel"
-    //     }
-    //   ]);
-    // } else {
+   
       const registerObj = {
         first_name: first_name,
         last_name: last_name,
@@ -72,16 +62,13 @@ class RegisterContainer extends React.Component {
         password: password
       };
       dispatch(registerEntry(registerObj));
-      // dispatch(registerEntry(registerObj, navigate));
     }
-  // }
 
   render() {
     console.log(this.props.first_name);
     return (
   
-        
-        <View style={styles.container}>
+          <View style={styles.container}>
          <Image
           source={Origin}
           style={styles.originImage}
@@ -115,8 +102,6 @@ class RegisterContainer extends React.Component {
           @Aggressive Squid Inc.
           </Text>
         </View>
-    
-     
     );
   }
 }
@@ -127,7 +112,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     paddingTop: 10,
-    // paddingBottom: 300
   },
   button: {
     marginTop: 55,
@@ -140,7 +124,6 @@ const styles = StyleSheet.create({
 
   formContainer: {
     width: 350
-    // padding: 50
   },
   originImage: {
     width: 180,

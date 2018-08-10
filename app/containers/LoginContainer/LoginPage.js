@@ -1,7 +1,6 @@
 import React from 'react';
 import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import { FormLabel, FormInput, Button, FormValidationMessage, Icon } from 'react-native-elements';
-// import { MonoText } from '../components/StyledText';
 import Origin from '../../assets/images/originLogo.png'
 import { emailEntry, passwordEntry } from './LoginActions';
 
@@ -25,7 +24,6 @@ export default class LoginPage extends React.Component {
   }
 
   loginButton() { }
-
   render() {
     return (
       <View style={styles.container}>
@@ -59,7 +57,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 10,
-    // paddingBottom: 300
   },
   button: {
     marginTop: 55,
@@ -72,7 +69,6 @@ const styles = StyleSheet.create({
 
   formContainer: {
     width: 350
-    // padding: 50
   },
   originImage: {
     width: 180,
