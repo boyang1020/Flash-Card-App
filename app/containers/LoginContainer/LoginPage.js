@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import { FormLabel, FormInput, Button, FormValidationMessage, Icon } from 'react-native-elements';
 import Origin from '../../assets/images/originLogo.png'
-import { emailEntry, passwordEntry } from './LoginActions';
+import { emailEntry, passwordEntry, loginEntry } from './LoginActions';
 
 export default class LoginPage extends React.Component {
   constructor(props) {
@@ -23,7 +23,14 @@ export default class LoginPage extends React.Component {
     dispatch(passwordEntry(text));
   }
 
-  loginButton() { }
+  loginButton() {
+    const {dispatch, email, login} = this.props;
+    const loginObj = {
+      "email": email,
+      "password": password
+    }
+    dispatch(loginEntry(loginObj));
+  }
   render() {
     return (
       <View style={styles.container}>

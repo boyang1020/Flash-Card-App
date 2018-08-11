@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   StyleSheet,
   Image,
@@ -31,77 +30,74 @@ class RegisterContainer extends React.Component {
     this.handleRegisterSubmission = this.handleRegisterSubmission.bind(this);
   }
 
-  handleFirstNameInput(text) {
+  handleFirstNameInput(firstName) {
     const { dispatch } = this.props;
-    dispatch(firstNameEntry(text));
+    dispatch(firstNameEntry(firstName));
   }
 
-  handleLastNameInput(text) {
+  handleLastNameInput(lastName) {
     const { dispatch } = this.props;
-    dispatch(lastNameEntry(text));
+    dispatch(lastNameEntry(lastName));
   }
 
-  handleEmailInput(text) {
+  handleEmailInput(email) {
     const { dispatch } = this.props;
-    dispatch(emailEntry(text));
+    dispatch(emailEntry(email));
   }
 
-  handlePasswordInput(text) {
+  handlePasswordInput(password) {
     const { dispatch } = this.props;
-    dispatch(passwordEntry(text));
+    dispatch(passwordEntry(password));
   }
 
   handleRegisterSubmission() {
-    console.log(this.handleRegisterSubmission)
-    const { dispatch, first_name, last_name, email, password } = this.props;
-   
-      const registerObj = {
-        first_name: first_name,
-        last_name: last_name,
-        email: email,
-        password: password
-      };
-      dispatch(registerEntry(registerObj));
-    }
+    const { dispatch, firstName, lastName, email, password } = this.props;
+    const registerObj = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+    };
+    dispatch(registerEntry(registerObj));
+  }
 
   render() {
-    console.log(this.props.first_name);
     return (
-  
-          <View style={styles.container}>
-         <Image
+      <View style={styles.container}>
+        <Image
           source={Origin}
           style={styles.originImage}
         />
-          <View style={styles.formContainer}>
-            <FormLabel>FIRST NAME </FormLabel>
-            <FormInput onChangeText={this.handleFirstNameInput} />
-            <FormLabel>LAST NAME</FormLabel>
-            <FormInput onChangeText={this.handleLastNameInput} />
-            <FormLabel>EMAIL</FormLabel>
-            <FormInput onChangeText={this.handleEmailInput} />
-            <FormLabel>PASSWORD</FormLabel>
-            <FormInput
-              secureTextEntry={true}
-              onChangeText={this.handlePasswordInput}
-            />
-          </View>
-          <View />
-          <Button
-            style={styles.button}
-            onPress={this.handleRegisterSubmission}
-            color={"#63A1CA"}
-            backgroundColor={"#242F49"}
-            borderRadius={3}
-        
-            icon={{ name: "sign-in", type: "font-awesome", color: "#63A1CA" }}
-            title="register"
+        <View style={styles.formContainer}>
+          <FormLabel>FIRST NAME </FormLabel>
+          <FormInput onChangeText={this.handleFirstNameInput} autoCorrect={false} />
+          <FormLabel>LAST NAME</FormLabel>
+          <FormInput onChangeText={this.handleLastNameInput} autoCorrect={false} />
+          <FormLabel>EMAIL</FormLabel>
+          <FormInput onChangeText={this.handleEmailInput} autoCorrect={false} />
+          <FormLabel>PASSWORD</FormLabel>
+          <FormInput
+            autoCorrect={false}
+            secureTextEntry={true}
+            onChangeText={this.handlePasswordInput}
           />
-          
-          <Text style={styles.text}>
+        </View>
+        <View />
+        <Button
+          style={styles.button}
+          onPress={this.handleRegisterSubmission}
+          color={"#63A1CA"}
+          backgroundColor={"#242F49"}
+          borderRadius={3}
+
+          icon={{ name: "sign-in", type: "font-awesome", color: "#63A1CA" }}
+          title="register"
+        />
+
+        <Text style={styles.text}>
           Origin Code Academy LLC
           </Text>
-        </View>
+      </View>
     );
   }
 }
@@ -118,8 +114,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 320,
     shadowColor: '#000',
-       shadowOffset: { width: 3, height: 4 },
-       shadowOpacity: 0.5,
+    shadowOffset: { width: 3, height: 4 },
+    shadowOpacity: 0.5,
   },
 
   formContainer: {
@@ -132,16 +128,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingBottom: 30,
   },
-  text:{
-    marginTop:0,
+  text: {
+    marginTop: 0,
   },
   switchToLogin: {}
 });
 
 function mapStoreToProps(store) {
   return {
-    first_name: store.registerData.first_name,
-    last_name: store.registerData.last_name,
+    firstName: store.registerData.firstName,
+    lastName: store.registerData.lastName,
     email: store.registerData.email,
     password: store.registerData.password,
     user: store.registerData.user
