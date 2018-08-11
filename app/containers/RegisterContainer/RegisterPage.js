@@ -90,16 +90,16 @@ class RegisterContainer extends React.Component {
           <Button
             style={styles.button}
             onPress={this.handleRegisterSubmission}
-            color='white'
-            backgroundColor={"#346abb"}
+            color={"#63A1CA"}
+            backgroundColor={"#242F49"}
             borderRadius={3}
         
-            icon={{ name: "sign-in", type: "font-awesome" }}
-            title="REGISTER"
+            icon={{ name: "sign-in", type: "font-awesome", color: "#63A1CA" }}
+            title="register"
           />
           
           <Text style={styles.text}>
-          @Aggressive Squid Inc.
+          Origin Code Academy LLC
           </Text>
         </View>
     );
@@ -126,10 +126,10 @@ const styles = StyleSheet.create({
     width: 350
   },
   originImage: {
-    width: 180,
-    height: 160,
+    width: 110,
+    height: 90,
     resizeMode: 'contain',
-    marginTop: 30,
+    marginTop: 20,
     paddingBottom: 30,
   },
   text:{
