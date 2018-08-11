@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   text:{
+    fontFamily: 'AvenirNext-Regular',
     marginTop:0,
   },
 });
