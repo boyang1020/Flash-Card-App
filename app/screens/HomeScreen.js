@@ -1,16 +1,40 @@
 import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { WebBrowser } from 'expo';
+import { createStackNavigator } from 'react-navigation';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import Origin from '../assets/images/originLogo.png';
+import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
+import { Button } from 'react-native-elements';
 
-import { MonoText } from '../components/StyledText';
+//Login Screen Navigation
+const LoginStack = createStackNavigator({
+  Login: LoginScreen,
+});
+
+LoginStack.navigationOptions = {
+  tabBarLabel: 'Login',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-log-in${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
+
+//Register Screen Navigation
+const RegisterStack = createStackNavigator({
+  Register: RegisterScreen,
+});
+
+RegisterStack.navigationOptions = {
+  tabBarLabel: 'Register',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-create${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -18,173 +42,80 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-          
-      
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/originLogo.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>" HELLO WORLD"</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
+        <Image
+          source={Origin}
+          style={styles.originImage}
+        />
+        <Text className='mainText' style={styles.blurb}>
+        Don’t lose what you’ve learned!
+        Constantly refresh your mental database, by using this flash card app.
+        </Text>
+        <Button style={styles.button}
+          onPress={() => navigate('Login')}
+          color={"#63A1CA"}
+          backgroundColor={"#242F49"}
+          borderRadius={3}
+          title='login'
+          icon={{ name: "sign-in", type: "font-awesome", color: "#63A1CA" }}
+          />
+        <Button
+          onPress={() => navigate('Register')}
+          style={styles.button}
+          color={"#63A1CA"}
+          backgroundColor={"#242F49"}
+          borderRadius={3}
+          icon={{ name: "sign-in", type: "font-awesome", color: "#63A1CA" }}
+          title="register"/>
+          <Text style={styles.text}>
+          Origin Code Academy LLC
+          </Text>
       </View>
-    );
+    )
   }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
+    backgroundColor: 'white',
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+    paddingTop: 10,
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
+  button: {
+    marginTop: 55,
+    marginBottom: 20,
+    width: 320,
+    shadowColor: '#000',
+       shadowOffset: { width: 3, height: 4 },
+       shadowOpacity: 0.5,
+  },
+  formContainer: {
+    width: 350
+  },
+  originImage: {
+    width: 110,
+    height: 90,
     resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+    marginTop: 20,
+    paddingBottom: 30,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
+  text:{
+    fontFamily: 'AvenirNext-Regular',
+    marginTop:0,
   },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
+  blurb:{
+    display: 'flex',
+    justifyContent: 'center',
     textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+    marginTop:3,
+    color: '#63A1CA',
+    fontFamily: 'AvenirNext-Regular', 
+    fontSize: 20, 
+    marginTop: 40,
+    marginLeft: 15,
+    marginRight: 15,  
+  }
 });

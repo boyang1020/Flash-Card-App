@@ -4,11 +4,10 @@ import RegisterPage from './RegisterPage';
 
 function mapStoreToProps(store) {
     return {
-      first_name: store.search.first_name,
-      last_name: store.search.last_name,
+      firstName: store.search.firstName,
+      lastName: store.search.lastName,
       email: store.search.email,
       password: store.search.password,
-      
     };
   }
 

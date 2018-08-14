@@ -1,37 +1,42 @@
-export function firstNameEntry(text) {
+import axios from 'axios';
 
-    return {
-        type: 'FIRST_NAME_ENTRY',
-        payload: text
-    }
+export function firstNameEntry(firstName) {
+
+  return {
+    type: 'FIRST_NAME_ENTRY',
+    payload: firstName
+  }
 }
 
-export function lastNameEntry(text) {
+export function lastNameEntry(lastName) {
 
-    return {
-        type: 'LAST_NAME_ENTRY',
-        payload: text
-    }
+  return {
+    type: 'LAST_NAME_ENTRY',
+    payload: lastName
+  }
 }
 
-export function emailEntry(text) {
+export function emailEntry(email) {
 
-    return {
-        type: 'EMAIL_ENTRY',
-        payload: text
-    }
+  return {
+    type: 'EMAIL_ENTRY',
+    payload: email
+  }
 }
 
-export function passwordEntry(text) {
-    return {
-        type: 'PASSWORD_ENTRY',
-        payload: text
-    }
+export function passwordEntry(password) {
+  return {
+    type: 'PASSWORD_ENTRY',
+    payload: password
+  }
 }
 
-export function registerEntry(registerObj, navigate) {
-    return {
-        type: 'SIGN_UP_ENTRY',
-        payload: registerObj
-    }
+export function registerEntry(registerObj) {
+  return {
+    type: 'SIGN_UP_ENTRY',
+    payload: axios
+      .post('http://94573ede.ngrok.io/api/users', registerObj)
+      .then(res => {return res.data})
+      .catch(err => {console.log(err)})
+  }
 }
