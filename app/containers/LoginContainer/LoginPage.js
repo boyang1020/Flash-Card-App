@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import { FormLabel, FormInput, Button, FormValidationMessage, Icon } from 'react-native-elements';
 import Origin from '../../assets/images/originLogo.png'
-import { emailEntry, passwordEntry } from './LoginActions';
+import { emailEntry, passwordEntry, loginEntry } from './LoginActions';
 
 export default class LoginPage extends React.Component {
   constructor(props) {
@@ -23,7 +23,14 @@ export default class LoginPage extends React.Component {
     dispatch(passwordEntry(text));
   }
 
-  loginButton() { }
+  loginButton() {
+    const {dispatch, email, login} = this.props;
+    const loginObj = {
+      "email": email,
+      "password": password
+    }
+    dispatch(loginEntry(loginObj));
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -39,12 +46,14 @@ export default class LoginPage extends React.Component {
         </View>
         <Button style={styles.button}
           onPress={this.loginButton}
-          color='white'
-          backgroundColor={"#346abb"}
+          color={"#63A1CA"}
+          backgroundColor={"#242F49"}
           borderRadius={3}
-          title='Login' />
+
+          icon={{ name: "sign-in", type: "font-awesome", color: "#63A1CA" }}
+            title="login" />
             <Text style={styles.text}>
-          @Aggressive Squid Inc.
+            Origin Code Academy LLC
           </Text>
       </View>
     )
@@ -71,13 +80,14 @@ const styles = StyleSheet.create({
     width: 350
   },
   originImage: {
-    width: 180,
-    height: 160,
+    width: 110,
+    height: 90,
     resizeMode: 'contain',
-    marginTop: 30,
+    marginTop: 20,
     paddingBottom: 30,
   },
   text:{
+    fontFamily: 'AvenirNext-Regular',
     marginTop:0,
   },
 });
