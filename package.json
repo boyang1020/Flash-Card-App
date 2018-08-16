@@ -22,6 +22,7 @@
     "loopback-connector-mongodb": "^3.5.0",
     "react": "^16.4.2",
     "react-native": "^0.56.0",
+    "react-native-card-flip": "^1.0.3",
     "react-native-elements": "^0.19.1",
     "react-navigation": "^2.11.2",
     "react-redux": "^5.0.7",

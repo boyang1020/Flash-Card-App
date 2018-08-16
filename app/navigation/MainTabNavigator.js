@@ -7,6 +7,8 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import TutorialScreen from '../screens/TutorialScreen';
 import DashboardScreen from '../screens/DashboardScreen';
+import FlashcardScreen from '../screens/FlashcardScreen';
+
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -40,7 +42,6 @@ DashboardStack.navigationOptions = {
   ),
 };
 
-
 const LoginStack = createStackNavigator({
   Login: LoginScreen,
 });
@@ -61,6 +62,22 @@ const RegisterStack = createStackNavigator({
 
 RegisterStack.navigationOptions = {
   tabBarLabel: 'Register',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios-sign-in' ? `ios-create${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
+
+
+
+const FlashcardStack = createStackNavigator({
+  Flashcard: FlashcardScreen,
+});
+
+FlashcardStack.navigationOptions = {
+  tabBarLabel: 'Flash Cards',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -93,4 +110,5 @@ export default createBottomTabNavigator({
   LoginStack,
   RegisterStack,
   TutorialStack,
+  FlashcardStack
 });
