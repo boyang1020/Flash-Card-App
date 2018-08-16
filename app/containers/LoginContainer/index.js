@@ -4,9 +4,9 @@ import LoginPage from './LoginPage';
 
 function mapStoreToProps(store) {
     return {
-      email: store.search.email,
-      password: store.search.password,
-      id: store.search.id
+      email: store.login.email,
+      password: store.login.password,
+      accessToken: store.login.accessToken
     };
   }
 

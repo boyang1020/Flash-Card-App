@@ -4,8 +4,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import TutorialScreen from '../screens/TutorialScreen';
+import DashboardScreen from '../screens/DashboardScreen';
+import FlashcardScreen from '../screens/FlashcardScreen';
+
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -21,6 +24,20 @@ HomeStack.navigationOptions = {
           ? `ios-information-circle${focused ? '' : '-outline'}`
           : 'md-information-circle'
       }
+    />
+  ),
+};
+
+const DashboardStack = createStackNavigator({
+  Dashboard: DashboardScreen,
+});
+
+DashboardStack.navigationOptions = {
+  tabBarLabel: 'Dashboard',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
     />
   ),
 };
@@ -48,28 +65,50 @@ RegisterStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
+      name={Platform.OS === 'ios-sign-in' ? `ios-create${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
+
+
+
+const FlashcardStack = createStackNavigator({
+  Flashcard: FlashcardScreen,
+});
+
+FlashcardStack.navigationOptions = {
+  tabBarLabel: 'Flash Cards',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
       name={Platform.OS === 'ios' ? `ios-create${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const TutorialStack = createStackNavigator({
+  Tutorial: TutorialScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+TutorialStack.navigationOptions = {
+  tabBarLabel: 'Tutorial',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-flash${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
     />
   ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
+  DashboardStack,
   LoginStack,
   RegisterStack,
-  SettingsStack,
+  TutorialStack,
+  FlashcardStack
 });

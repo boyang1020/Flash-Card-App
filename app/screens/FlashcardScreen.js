@@ -1,15 +1,16 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import LoginPage from '../containers/LoginContainer';
+import FlashcardPage from '../containers/FlashcardContainer';
 
-export default class LoginScreen extends React.Component {
+export default class FlashcardScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
   render() {
+
     return (
-      <LoginPage />
+      <FlashcardPage />
     );
   }
 };
