@@ -43,3 +43,6 @@ React Native Elements
 npm install --save react-native-elements
 
 React
+
+Axios
+npm install axios
