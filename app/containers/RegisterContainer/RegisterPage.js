@@ -16,8 +16,10 @@ import {
   FormValidationMessage,
   Icon
 } from "react-native-elements";
+import { createStackNavigator } from 'react-navigation';
 import Origin from '../../assets/images/originLogo.png';
 import { firstNameEntry, lastNameEntry, emailEntry, passwordEntry, registerEntry } from "./RegisterAction";
+import LoginScreen from '../LoginContainer';
 
 class RegisterContainer extends React.Component {
   constructor(props) {
@@ -51,17 +53,23 @@ class RegisterContainer extends React.Component {
   }
 
   handleRegisterSubmission() {
+    const { navigate } = this.props.navigation;
     const { dispatch, firstName, lastName, email, password } = this.props;
+    if (firstName == '' || lastName == '' || email == '' || password == '') {
+      return alert('Make sure everything is filled out!')
+    }
     const registerObj = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password,
     };
-    dispatch(registerEntry(registerObj));
+    navigate('LoginContainer')
+    dispatch(registerEntry(registerObj, navigate));
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Image
@@ -117,7 +125,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 3, height: 4 },
     shadowOpacity: 0.5,
   },
-
   formContainer: {
     width: 350
   },
@@ -132,7 +139,6 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-Regular',
     marginTop: 0,
   },
-  switchToLogin: {}
 });
 
 function mapStoreToProps(store) {

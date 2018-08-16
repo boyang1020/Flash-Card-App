@@ -1,6 +1,6 @@
 import { connect, Provider } from 'react-redux';
 import { createStore } from 'redux'
-import LoginPage from './LoginPage';
+import TutorialPage from './TutorialPage';
 
 function mapStoreToProps(store) {
     return {
@@ -11,4 +11,4 @@ function mapStoreToProps(store) {
     };
   }
 
-export default connect(mapStoreToProps)(LoginPage)
+export default connect(mapStoreToProps)(TutorialPage)
