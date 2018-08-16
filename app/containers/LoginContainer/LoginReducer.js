@@ -1,9 +1,7 @@
 const defaultState = {
   email: '',
   password: '',
-  object: [],
-  id: null,
-  userId: null
+  accessToken: null,
 }
 
 export default function loginReducer(state = defaultState, action) {
@@ -22,15 +20,10 @@ export default function loginReducer(state = defaultState, action) {
         password: payload
       }
     }
-    case 'LOGIN_ENTRY_PENDING': {
-      return {
-        ...state,
-      }
-    }
     case 'LOGIN_ENTRY_FULFILLED': {
       return {
         ...state,
-        object: payload.data
+        accessToken: payload,
       }
     }
     default: {
