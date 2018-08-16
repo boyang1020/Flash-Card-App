@@ -4,9 +4,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import TutorialScreen from '../screens/TutorialScreen';
+import DashboardScreen from '../screens/DashboardScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -25,6 +25,21 @@ HomeStack.navigationOptions = {
     />
   ),
 };
+
+const DashboardStack = createStackNavigator({
+  Dashboard: DashboardScreen,
+});
+
+DashboardStack.navigationOptions = {
+  tabBarLabel: 'Dashboard',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+    />
+  ),
+};
+
 
 const LoginStack = createStackNavigator({
   Login: LoginScreen,
@@ -72,24 +87,10 @@ TutorialStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
-    />
-  ),
-};
-
 export default createBottomTabNavigator({
   HomeStack,
+  DashboardStack,
   LoginStack,
   RegisterStack,
   TutorialStack,
-  SettingsStack,
 });
