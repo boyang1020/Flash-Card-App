@@ -3,7 +3,7 @@ import { createStackNavigator } from 'react-navigation';
 import { Image, StyleSheet, Text, View, ScrollView, ListView } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import Origin from '../../assets/images/originLogo.png';
-import fakeImage from '../../assets/images/robot-dev.png';
+import flashcard from '../../assets/images/flashcard.png';
 
 export default class TutorialPage extends React.Component {
   render() {
@@ -18,7 +18,7 @@ export default class TutorialPage extends React.Component {
             Welcome to the Origin Flash Card App!
           </Text>
           <Image 
-          source={fakeImage}
+          source={flashcard}
           style={styles.flashCard}/>
           <Text style={styles.text}>
             Swipe right if you know the answer to the question.
@@ -72,14 +72,14 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'AvenirNext-Regular',
     fontSize: 17,
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    textAlign: 'left'
   },
   flashCard: {
     width: 300,
-    height: 400,
+    height: 450,
     resizeMode: 'contain',
     marginTop: 20,
     paddingBottom: 30,
-    backgroundColor: 'black'
   }
 })

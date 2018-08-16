@@ -3,9 +3,6 @@ const defaultState = {
   lastName: '',
   email: '',
   password: '',
-  token: null,
-  id: null,
-  user: null
 }
 
 export default function registerReducer(state = defaultState, action) {
@@ -48,9 +45,6 @@ export default function registerReducer(state = defaultState, action) {
         lastName: payload.lastName,
         email: payload.email,
         password: payload.password,
-        token: payload.token,
-        id: payload.id,
-        user: payload
       }
     }
     case 'SIGN_UP_ENTRY_REJECTED': {

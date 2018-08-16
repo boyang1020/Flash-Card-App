@@ -32,8 +32,7 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
-    const {object} = this.props;
-    console.log(object);
+    const {accessToken} = this.props;
     return (
       <View style={styles.container}>
         <Image

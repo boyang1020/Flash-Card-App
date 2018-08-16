@@ -32,24 +32,24 @@ class RegisterContainer extends React.Component {
     this.handleRegisterSubmission = this.handleRegisterSubmission.bind(this);
   }
 
-  handleFirstNameInput(firstName) {
+  handleFirstNameInput(text) {
     const { dispatch } = this.props;
-    dispatch(firstNameEntry(firstName));
+    dispatch(firstNameEntry(text));
   }
 
-  handleLastNameInput(lastName) {
+  handleLastNameInput(text) {
     const { dispatch } = this.props;
-    dispatch(lastNameEntry(lastName));
+    dispatch(lastNameEntry(text));
   }
 
-  handleEmailInput(email) {
+  handleEmailInput(text) {
     const { dispatch } = this.props;
-    dispatch(emailEntry(email));
+    dispatch(emailEntry(text));
   }
 
-  handlePasswordInput(password) {
+  handlePasswordInput(text) {
     const { dispatch } = this.props;
-    dispatch(passwordEntry(password));
+    dispatch(passwordEntry(text));
   }
 
   handleRegisterSubmission() {
@@ -97,11 +97,9 @@ class RegisterContainer extends React.Component {
           color={"#63A1CA"}
           backgroundColor={"#242F49"}
           borderRadius={3}
-
           icon={{ name: "sign-in", type: "font-awesome", color: "#63A1CA" }}
           title="register"
         />
-
         <Text style={styles.text}>
           Origin Code Academy LLC
           </Text>
@@ -122,8 +120,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 320,
     shadowColor: '#000',
-    shadowOffset: { width: 3, height: 4 },
-    shadowOpacity: 0.5,
+       shadowOffset: { width: 3, height: 4 },
+       shadowOpacity: 0.5,
   },
   formContainer: {
     width: 350
@@ -143,8 +141,8 @@ const styles = StyleSheet.create({
 
 function mapStoreToProps(store) {
   return {
-    firstName: store.registerData.firstName,
-    lastName: store.registerData.lastName,
+    first_name: store.registerData.first_name,
+    last_name: store.registerData.last_name,
     email: store.registerData.email,
     password: store.registerData.password,
     user: store.registerData.user

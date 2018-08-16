@@ -20,9 +20,6 @@ export function loginEntry(email, password) {
     type: 'LOGIN_ENTRY',
     payload: axios
       .post('http://localhost:3000/api/Users/login', {email, password})
-      .then(res => { console.log(res.data)
-        const accessToken = res.data.id;
-        const userId = res.data.userId
-      })
+      .then(res => {return res.data})
   }
 }
