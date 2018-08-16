@@ -1,6 +1,9 @@
 const defaultState = {
   email: '',
-  password: ''
+  password: '',
+  object: [],
+  id: null,
+  userId: null
 }
 
 export default function loginReducer(state = defaultState, action) {
@@ -27,16 +30,9 @@ export default function loginReducer(state = defaultState, action) {
     case 'LOGIN_ENTRY_FULFILLED': {
       return {
         ...state,
-        email: payload.email,
-        password: payload.password,
+        object: payload.data
       }
     }
-    case 'LOGIN_ENTRY_REJECTED': {
-      return {
-        ...state,
-      }
-    }
-
     default: {
       return state;
     }
