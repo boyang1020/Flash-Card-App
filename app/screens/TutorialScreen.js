@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import LoginPage from '../containers/LoginContainer';
+import TutorialPage from '../containers/TutorialContainer';
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
@@ -9,7 +9,7 @@ export default class LoginScreen extends React.Component {
 
   render() {
     return (
-      <LoginPage />
+      <TutorialPage />
     );
   }
 };

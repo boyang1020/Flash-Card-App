@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import TutorialScreen from '../screens/TutorialScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -53,6 +54,24 @@ RegisterStack.navigationOptions = {
   ),
 };
 
+const TutorialStack = createStackNavigator({
+  Tutorial: TutorialScreen,
+});
+
+TutorialStack.navigationOptions = {
+  tabBarLabel: 'Tutorial',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-flash${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
@@ -71,5 +90,6 @@ export default createBottomTabNavigator({
   HomeStack,
   LoginStack,
   RegisterStack,
+  TutorialStack,
   SettingsStack,
 });
