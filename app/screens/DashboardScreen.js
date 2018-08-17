@@ -4,6 +4,7 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, } from 'reac
 import Origin from '../assets/images/originLogo.png';
 import { Button } from 'react-native-elements';
 import TutorialScreen from '../screens/TutorialScreen';
+import FlashcardScreen from '../screens/FlashcardScreen';
 
 
 const TutorialStack = createStackNavigator({
@@ -20,6 +21,19 @@ TutorialStack.navigationOptions = {
   ),
 };
 
+const FlashcardStack = createStackNavigator({
+  Flashcard: FlashcardScreen,
+});
+
+FlashcardStack.navigationOptions = {
+  tabBarLabel: 'Flashcard',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-log-in${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -35,7 +49,7 @@ export default class HomeScreen extends React.Component {
           style={styles.originImage}
         />
         <Button style={styles.button}
-          onPress={() => navigate('')}
+          onPress={() => navigate('Flashcard')}
           color={"#63A1CA"}
           backgroundColor={"#242F49"}
           borderRadius={3}

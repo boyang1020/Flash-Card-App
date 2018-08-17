@@ -7,7 +7,7 @@ const SWIPE_OUT_DURATION = 250;
 
 class Deck extends Component {
   static defaultProps = {
-    onSwipeRight: () => { },
+    onSwipeRight: (item, score) => { item.score  = score},
     onSwipeLeft: () => { }
   }
 
@@ -56,8 +56,15 @@ class Deck extends Component {
   onSwipeComplete(direction) {
     const { onSwipeLeft, onSwipeRight, data } = this.props;
     const item = data[this.state.index]
+    const inactive = [];
 
-    direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
+    direction === 'right' ? onSwipeRight(item, item.score + 1, Math.min(item.score + 1, 2)) : onSwipeLeft(item);
+    if (item.score === 2) {
+      inactive.push(item);
+    }
+
+    console.log(item.score);
+    console.log(inactive);
     this.state.position.setValue({ x: 0, y: 0 })
     this.setState({ index: this.state.index + 1 })
   }

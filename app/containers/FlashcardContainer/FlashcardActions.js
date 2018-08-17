@@ -17,12 +17,9 @@ export function answer(cardAnswer) {
 
 export function getFlashCards(loginObj) {
   return {
-      type: 'LOGIN_ENTRY',
+      type: 'GET_CARDS',
       payload: axios
-      .get('https://94573ede.ngrok.io/api/cards', loginObj)
-      .then(res => {
-        const accessToken = res.data.id;
-        return axios.patch(`http://94573ede.ngrok.io/api/users/${id}?access_token=${accessToken}`)
-      })
+      .get('http://localhost:3000/api/cards', loginObj)
+      .then(res => {console.log(res.data)})
   }
 }
