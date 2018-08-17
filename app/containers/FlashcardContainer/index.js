@@ -4,8 +4,9 @@ import FlashcardPage from './FlashcardPage';
 
 function mapStoreToProps(store) {
     return {
-      cardQuestion: store.search.cardQuestion,
-      cardAnswer: store.search.cardAnswer
+      cardQuestion: store.flashcard.cardQuestion,
+      cardAnswer: store.flashcard.cardAnswer,
+      cards: store.flashcard.cards
     };
   }
 

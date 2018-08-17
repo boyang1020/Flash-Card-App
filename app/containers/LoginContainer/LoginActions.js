@@ -20,6 +20,15 @@ export function loginEntry(email, password) {
     type: 'LOGIN_ENTRY',
     payload: axios
       .post('http://localhost:3000/api/Users/login', {email, password})
-      .then(res => {return res.data})
+      .then(res => {return res.data })
+      .then(res => {
+        return axios.get('http://localhost:3000/api/cards')
+                    .then(cards => {
+                      return {
+                        cards,
+                        tokens: res
+                      }
+                    })
+      })
   }
 }

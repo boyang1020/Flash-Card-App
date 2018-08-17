@@ -5,14 +5,14 @@ import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
 
  const DATA = [
-      { id: 1, text: 'What is Javascript?' },
-      { id: 2, text: 'What is CSS?' },
-      { id: 3, text: 'What is HTML?' },
-      { id: 4, text: 'What is a React Component?' },
-      { id: 5, text: 'What is a for loop?' },
-      { id: 6, text: 'How do you make a express server?' },
-      { id: 7, text: 'Question #7' },
-      { id: 8, text: 'Question #8' },
+      { id: 1, text: 'What is Javascript?', score: 1 },
+      { id: 2, text: 'What is CSS?', score: 1 },
+      { id: 3, text: 'What is HTML?', score: 1},
+      { id: 4, text: 'What is a React Component?', score: 1 },
+      { id: 5, text: 'What is a for loop?', score: 1 },
+      { id: 6, text: 'How do you make a express server?', score: 1 },
+      { id: 7, text: 'Question #7', score: 1 },
+      { id: 8, text: 'Question #8', score: 1 },
     ];
 
 class App extends React.Component {

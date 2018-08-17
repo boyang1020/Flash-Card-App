@@ -14,8 +14,8 @@
       "type": "string",
       "required": true
     },
-    "comprehend": {
-      "type": "boolean",
+    "score": {
+      "type": "number",
       "required": true
     }
   },
