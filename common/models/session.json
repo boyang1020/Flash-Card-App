@@ -6,17 +6,17 @@
     "validateUpsert": true
   },
   "properties": {
-    "date": {
-      "type": "date",
+    "cards": {
+      "type": "array",
       "required": true
     }
   },
   "validations": [],
   "relations": {
-    "cards": {
+    "card": {
       "type": "hasMany",
       "model": "card",
-      "foreignKey": ""
+      "foreignKey": "card"
     }
   },
   "acls": [],
