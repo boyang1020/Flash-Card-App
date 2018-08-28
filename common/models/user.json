@@ -25,8 +25,13 @@
   },
   "validations": [],
   "relations": {
-    "sessions": {
+    "session": {
       "type": "hasMany",
+      "model": "session",
+      "foreignKey": ""
+    },
+    "sessions": {
+      "type": "belongsTo",
       "model": "session",
       "foreignKey": ""
     }
@@ -34,3 +39,4 @@
   "acls": [],
   "methods": {}
 }
+
