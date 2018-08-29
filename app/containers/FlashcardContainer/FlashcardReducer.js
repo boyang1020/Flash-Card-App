@@ -1,8 +1,8 @@
 const defaultState = {
   cardAnswer: '',
   cardQuestion: '',
-  cards: []
-}
+  accessToken: null,
+};
 
 export default function FlashcardReducer(state = defaultState, action) {
   const { type, payload } = action;
@@ -18,12 +18,6 @@ export default function FlashcardReducer(state = defaultState, action) {
       return {
         ...state,
         cardAnswer: payload
-      }
-    }
-    case 'GET_CARDS_FULFILLED': {
-      return{
-        ...state,
-        cards: payload
       }
     }
     default: {

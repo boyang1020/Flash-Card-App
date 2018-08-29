@@ -30,7 +30,8 @@
     "redux-promise-middleware": "^5.1.1",
     "redux-react-router": "^1.0.0-beta3",
     "serve-favicon": "^2.0.1",
-    "strong-error-handler": "^3.0.0"
+    "strong-error-handler": "^3.0.0",
+    "strongloop": "^6.0.3"
   },
   "devDependencies": {
     "eslint": "^3.17.1",

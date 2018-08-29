@@ -15,11 +15,11 @@ export function answer(cardAnswer) {
   }
 }
 
-export function getFlashCards(loginObj) {
+export function getFlashCards(cardQuestion, cardAnswer) {
   return {
       type: 'GET_CARDS',
       payload: axios
-      .get('http://localhost:3000/api/cards', loginObj)
+      .get('http://localhost:3000/api/cards', {cardQuestion, cardAnswer})
       .then(res => {console.log(res.data)})
   }
 }
