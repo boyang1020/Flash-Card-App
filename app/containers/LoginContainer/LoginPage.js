@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, } from 'react-native';
 import { FormLabel, FormInput, Button, Icon } from 'react-native-elements';
-import Origin from '../../assets/images/originLogo.png'
+import Origin from '../../assets/images/originLogo.png';
 import { emailEntry, passwordEntry, loginEntry } from './LoginActions';
 
 export default class LoginPage extends React.Component {
