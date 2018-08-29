@@ -48,6 +48,7 @@ export default class HomeScreen extends React.Component {
           source={Origin}
           style={styles.originImage}
         />
+        {/* need to add axios call within onPress that will pull up the cards and direct them to the page */}
         <Button style={styles.button}
           onPress={() => navigate('Flashcard')}
           color={"#63A1CA"}

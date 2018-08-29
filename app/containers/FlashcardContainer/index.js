@@ -6,7 +6,7 @@ function mapStoreToProps(store) {
     return {
       cardQuestion: store.flashcard.cardQuestion,
       cardAnswer: store.flashcard.cardAnswer,
-      cards: store.flashcard.cards
+      accessToken: store.login.accessToken,
     };
   }
 

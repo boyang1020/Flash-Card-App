@@ -23,7 +23,7 @@ export function loginEntry(email, password) {
       .then(res => {return res.data })
       .then(res => {
         return axios.get('http://localhost:3000/api/cards')
-                    .then(cards => {
+                    .then(cards => {{console.log(res.data)}
                       return {
                         cards,
                         tokens: res
