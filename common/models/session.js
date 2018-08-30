@@ -3,18 +3,16 @@
 module.exports = function (Session) {
   Session.newDeck = function (id, newDeck) {
     var cards;
-    setTimeout(() => {
-      Session.app.models.Card
-        .find({ where: { score: 0 }, limit: 8 })
-        .then(res => {
-          var scoreZero = res;
-          Session.app.models.Card
-            .find({ where: { score: 1 || 2 }, limit: 2 })
-            .then(res => {
-              return newDeck(null, cards = scoreZero.concat(res));
-            })
-        })
-    }, 5000)
+    Session.app.models.Card
+      .find({ where: { score: 0 }, limit: 8 })
+      .then(res => {
+        var scoreZero = res;
+        Session.app.models.Card
+          .find({ where: { score: 1 || 2 }, limit: 2 })
+          .then(res => {
+            return newDeck(null, cards = scoreZero.concat(res));
+          })
+      })
   }
 
   Session.remoteMethod('newDeck',
