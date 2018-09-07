@@ -3,25 +3,16 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
+import CardInfo from './src/CardInfo';
 import Origin from '../../assets/images/originLogo.png';
 
 class App extends React.Component {
-  renderCard(item) {
-    return (
-      <Card
-        key={item.id}>
-        <Text style={{ marginBottom: 100, }} >{item.question}</Text>
-        <Button
-          icon={{ name: 'code' }}
-          onPress={this.flipcard}
-          backgroundColor='#03a9f4'
-          title='view now'
-        />
-      </Card>
-    )
-  };
+  state = {
+    showAnswer: false
+  }
 
-  renderNoMoreCards() {
+
+  renderNoMoreCards = () => {
     return (
       <Card title="All Done">
         <Text style={{ marginBottom: 10 }}>
@@ -44,7 +35,7 @@ class App extends React.Component {
           />
         <Deck style={styles.deckstyle}
           data={DATA}
-          renderCard={this.renderCard}
+          renderCard={item => <CardInfo item={item} />}
           renderNoMoreCards={this.renderNoMoreCards}
         />
       </View>
