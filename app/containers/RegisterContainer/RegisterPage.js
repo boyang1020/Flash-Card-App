@@ -64,8 +64,9 @@ class RegisterContainer extends React.Component {
       email: email,
       password: password,
     };
-    navigate('LoginContainer')
+
     dispatch(registerEntry(registerObj, navigate));
+    navigate('Login');
   }
 
   render() {
