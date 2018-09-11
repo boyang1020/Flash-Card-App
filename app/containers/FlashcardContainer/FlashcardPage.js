@@ -11,7 +11,6 @@ class App extends React.Component {
     showAnswer: false
   }
 
-
   renderNoMoreCards = () => {
     return (
       <Card title="All Done">
@@ -38,6 +37,9 @@ class App extends React.Component {
           renderCard={item => <CardInfo item={item} />}
           renderNoMoreCards={this.renderNoMoreCards}
         />
+          <Text style={styles.text2}>
+          Origin Code Academy LLC
+          </Text>
       </View>
     );
   }
@@ -56,6 +58,14 @@ const styles = StyleSheet.create({
     paddingBottom: 300,
     alignSelf: "center",
     },
+    text: {
+      fontFamily: 'AvenirNext-Regular',
+    },
+    text2:{
+      fontFamily: 'AvenirNext-Regular',
+      textAlign: 'center',
+      marginTop: 455,
+    }
 });
 
 export default App;

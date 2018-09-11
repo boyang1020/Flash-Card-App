@@ -47,7 +47,14 @@ export default class TutorialPage extends React.Component {
             Swipe left if you don't.
           </Text>
           <Text style={styles.text}>
-            Tap the flashcard when you want to see the answer.
+            Click on the button at the bottom of the card to show or hide the answer.
+          </Text>
+          <Image
+            source={Origin}
+            style={styles.originImage}
+          />
+          <Text style={styles.text}>
+            Click on the Origin icon to leave the flash card screen and go back to the dashboard.
           </Text>
           <Button style={styles.button}
             onPress={() => navigate('Flashcard')}
@@ -55,6 +62,9 @@ export default class TutorialPage extends React.Component {
             backgroundColor={"#242F49"}
             borderRadius={3}
             title="start" />
+            <Text id="bottom" style={styles.text2}>
+          Origin Code Academy LLC
+          </Text>
         </View>
       </ScrollView>
     )
@@ -77,7 +87,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 55,
-    marginBottom: 20,
+    marginBottom: 10,
     width: 320,
     shadowColor: '#000',
     shadowOffset: { width: 3, height: 4 },
@@ -87,19 +97,30 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-Regular',
     margin: 10,
     fontSize: 20,
+    textAlign: 'center',
+    color: '#63A1CA',
     fontWeight: 'bold'
   },
   text: {
     fontFamily: 'AvenirNext-Regular',
     fontSize: 17,
     alignItems: 'flex-start',
-    textAlign: 'left'
+    textAlign: 'center',
+    marginTop: 20,
+    color: '#63A1CA',
+    marginHorizontal: 20
   },
   flashCard: {
     width: 300,
     height: 450,
     resizeMode: 'contain',
     marginTop: 20,
+    paddingBottom: 30,
+  },
+  text2: {
+    fontFamily: 'AvenirNext-Regular',
+    textAlign: 'center',
+    marginTop: 10,
     paddingBottom: 30,
   }
 })

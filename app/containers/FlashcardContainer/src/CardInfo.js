@@ -19,23 +19,48 @@ class CardInfo extends React.Component {
     return (
       <Card key={item.id}>
         {this.state.showAnswer ? (
-        <Text style={{ marginBottom: 100 }} >
+        <Text style={{ marginBottom: 100 ,marginTop: 40, textAlign: "center"}} >
           {item.answer}
         </Text>
         ) : (
-          <Text style={{ marginBottom: 100, }} >
+          <Text style={{ marginBottom: 100,marginTop: 40,textAlign: "center"}} >
           {item.question}
         </Text>
+        
         )}
         <Button
-          icon={{ name: 'code' }}
           onPress={this.flipcard}
           backgroundColor='#03a9f4'
-          title='view now'
+          title='Click for Question/Answer'
         />
       </Card>
     )
   };
 };
+
+const styles = StyleSheet.create({
+  
+  welcome: {
+    fontFamily: 'AvenirNext-Regular',
+    margin: 10,
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  text: {
+    fontFamily: 'AvenirNext-Regular',
+    fontSize: 17,
+    alignItems: 'flex-start',
+    textAlign: 'center',
+    marginTop: 20,
+    marginHorizontal: 20
+  },
+  flashCard: {
+    width: 300,
+    height: 450,
+    resizeMode: 'contain',
+    marginTop: 20,
+    paddingBottom: 30,
+  },
+})
 
 export default CardInfo;
