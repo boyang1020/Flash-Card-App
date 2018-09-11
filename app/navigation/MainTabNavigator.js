@@ -27,6 +27,16 @@ HomeStack.navigationOptions = {
     />
   ),
 };
+HomeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = false;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 
 const DashboardStack = createStackNavigator({
   Dashboard: DashboardScreen,
@@ -42,6 +52,18 @@ DashboardStack.navigationOptions = {
   ),
 };
 
+DashboardStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = false;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
+
+
 const LoginStack = createStackNavigator({
   Login: LoginScreen,
 });
@@ -54,6 +76,17 @@ LoginStack.navigationOptions = {
       name={Platform.OS === 'ios' ? `ios-log-in${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
+};
+
+LoginStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = false;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
 };
 
 const RegisterStack = createStackNavigator({
@@ -70,6 +103,16 @@ RegisterStack.navigationOptions = {
   ),
 };
 
+RegisterStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = false;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 
 
 const FlashcardStack = createStackNavigator({
@@ -84,6 +127,17 @@ FlashcardStack.navigationOptions = {
       name={Platform.OS === 'ios' ? `ios-create${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
+};
+
+FlashcardStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = false;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
 };
 
 const TutorialStack = createStackNavigator({
@@ -102,6 +156,17 @@ TutorialStack.navigationOptions = {
       }
     />
   ),
+};
+
+TutorialStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = false;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
 };
 
 export default createBottomTabNavigator({

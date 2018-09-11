@@ -8,9 +8,9 @@ export default class FlashcardScreen extends React.Component {
   };
 
   render() {
-
+    const { navigate } = this.props.navigation;
     return (
-      <FlashcardPage />
+      <FlashcardPage navigation={this.props.navigation} />
     );
   }
 };

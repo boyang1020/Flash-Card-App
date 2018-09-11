@@ -1,6 +1,6 @@
 import expo from 'expo';
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
 import CardInfo from './src/CardInfo';
@@ -25,14 +25,14 @@ class App extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     const {accessToken} = this.props;
     const DATA = accessToken.cards && accessToken.cards.data;
     return (
       <View style={styles.container}>
-         <Image
-            source={Origin}
-            style={styles.originImage}
-          />
+          <TouchableOpacity onPress={() => navigate('Dashboard')}>
+          <Image style={styles.originImage} source={Origin}/>
+        </TouchableOpacity>
         <Deck style={styles.deckstyle}
           data={DATA}
           renderCard={item => <CardInfo item={item} />}
