@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, } from 'react-native';
 import { FormLabel, FormInput, Button, Icon } from 'react-native-elements';
+import { createStackNavigator } from 'react-navigation';
 import Origin from '../../assets/images/originLogo.png';
 import { emailEntry, passwordEntry, loginEntry } from './LoginActions';
 
@@ -25,14 +26,17 @@ export default class LoginPage extends React.Component {
   }
 
   loginButton() {
+    const { navigate } = this.props.navigation;
     const { dispatch, email, password} = this.props;
     if (email == '' || password == '' || !email || !password) {
       return alert('Please make sure everything is filled out!')
-    } else  dispatch(loginEntry(email, password));
+    }
+    dispatch(loginEntry(email, password)) && navigate('Dashboard');
   }
 
   render() {
     const {accessToken} = this.props;
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Image
