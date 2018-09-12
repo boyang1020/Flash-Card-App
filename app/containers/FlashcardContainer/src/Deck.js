@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateIndex } from '../FlashcardActions';
+import ViewMore from './ViewMore';
 import { View, Animated, PanResponder, Dimensions, LayoutAnimation, UIManager } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -7,12 +10,13 @@ const SWIPE_OUT_DURATION = 250;
 
 class Deck extends Component {
   static defaultProps = {
-    onSwipeRight: (item, score) => { item.score  = score},
+    onSwipeRight: (item, score) => { item.score = score },
     onSwipeLeft: () => { }
   }
 
   constructor(props) {
     super(props);
+    console.log(props);
 
     const position = new Animated.ValueXY();
     const panResponder = PanResponder.create({
@@ -36,7 +40,9 @@ class Deck extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data !== this.props.data) {
-      this.setState({ index: 0 });
+      //this.setState({ index: 0 });
+      const { dispatch } = this.props;
+      dispatch(updateIndex(0));
     }
   }
 
@@ -54,21 +60,19 @@ class Deck extends Component {
   }
 
   onSwipeComplete(direction) {
-    const { onSwipeLeft, onSwipeRight, data } = this.props;
-    const item = data[this.state.index]
+    const { onSwipeLeft, onSwipeRight, data, dispatch } = this.props;
+    const item = data[this.props.index]
     const inactive = [];
 
     direction === 'right' ? onSwipeRight(item, item.score + 1, Math.min(item.score + 1, 2)) : onSwipeLeft(item);
     if (item.score === 2) {
       inactive.push(item);
     }
-
-    console.log(item.score);
-    console.log(inactive);
     this.state.position.setValue({ x: 0, y: 0 })
-    this.setState({ index: this.state.index + 1 })
+    //this.setState({ index: this.state.index + 1 })
+    dispatch(updateIndex(this.props.index + 1))
+    
   }
-
 
   resetPosition() {
     Animated.spring(this.state.position, {
@@ -92,14 +96,15 @@ class Deck extends Component {
   }
 
   renderCards() {
-    if (this.state.index >= this.props.data.length) {
-      return this.props.renderNoMoreCards();
+    const { dispatch } = this.props;
+    if (this.props.index >= this.props.data.length) {
+      return <ViewMore />;
     }
 
     return this.props.data.map((item, i) => {
-      if (i < this.state.index) { return null; }
+      if (i < this.props.index) { return null; }
 
-      if (i === this.state.index) {
+      if (i === this.props.index) {
         return (
           <Animated.View
             key={item.id}
@@ -113,7 +118,7 @@ class Deck extends Component {
       return (
         <Animated.View
           key={item.id}
-          style={[styles.cardStyle, { top: 3 * (i - this.state.index) }]}>
+          style={[styles.cardStyle, { top: 3 * (i - this.props.index) }]}>
           {this.props.renderCard(item)}
         </Animated.View>
       );
@@ -122,8 +127,7 @@ class Deck extends Component {
 
   render() {
     return (
-      <View
-      >
+      <View>
         {this.renderCards()}
       </View>
     );
@@ -138,4 +142,4 @@ const styles = {
   }
 };
 
-export default Deck;
+export default connect()(Deck);

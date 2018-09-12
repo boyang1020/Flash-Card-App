@@ -15,7 +15,6 @@ class CardInfo extends React.Component {
 
   render() {
     const { item } = this.props;
-
     return (
       <Card key={item.id}>
         {this.state.showAnswer ? (

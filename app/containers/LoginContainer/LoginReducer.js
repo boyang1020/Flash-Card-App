@@ -23,7 +23,7 @@ export default function loginReducer(state = defaultState, action) {
     case 'LOGIN_ENTRY_FULFILLED': {
       return {
         ...state,
-        accessToken: payload,
+        accessToken: payload.tokens,
       }
     }
     default: {

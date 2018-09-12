@@ -4,10 +4,10 @@ import FlashcardPage from './FlashcardPage';
 
 function mapStoreToProps(store) {
     return {
-      cardQuestion: store.flashcard.cardQuestion,
-      cardAnswer: store.flashcard.cardAnswer,
       accessToken: store.login.accessToken,
+      index: store.flashcard.index,
+      deck: store.flashcard.deck
     };
   }
 
-export default connect(mapStoreToProps)(FlashcardPage)
+export default connect(mapStoreToProps)(FlashcardPage);

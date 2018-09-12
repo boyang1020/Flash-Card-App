@@ -5,37 +5,25 @@ import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
 import CardInfo from './src/CardInfo';
 import Origin from '../../assets/images/originLogo.png';
+import ViewMore from './src/ViewMore';
 
 class App extends React.Component {
   state = {
     showAnswer: false
   }
 
-  renderNoMoreCards = () => {
-    return (
-      <Card title="All Done">
-        <Text style={{ marginBottom: 10 }}>
-
-        </Text>
-        <Button backgroundColor='#03a9f4'
-          title='Get More'/>
-      </Card>
-    );
-  }
-
   render() {
     const { navigate } = this.props.navigation;
-    const {accessToken} = this.props;
-    const DATA = accessToken.cards && accessToken.cards.data;
+    const { deck } = this.props;
     return (
       <View style={styles.container}>
           <TouchableOpacity onPress={() => navigate('Dashboard')}>
           <Image style={styles.originImage} source={Origin}/>
         </TouchableOpacity>
         <Deck style={styles.deckstyle}
-          data={DATA}
+          index={this.props.index}
+          data={deck}
           renderCard={item => <CardInfo item={item} />}
-          renderNoMoreCards={this.renderNoMoreCards}
         />
           <Text style={styles.text2}>
           Origin Code Academy LLC

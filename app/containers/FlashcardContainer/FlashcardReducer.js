@@ -1,23 +1,31 @@
 const defaultState = {
-  cardAnswer: '',
-  cardQuestion: '',
   accessToken: null,
+  newDeck: [],
+  index: 0
 };
 
 export default function FlashcardReducer(state = defaultState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case 'CARD_QUESTION': {
+    case 'UPDATE_INDEX': {
       return {
         ...state,
-        cardQuestion: payload
+        index: payload
       }
     }
-    case 'CARD_ANSWER': {
+    case 'MORE_CARDS_FULFILLED': {
       return {
         ...state,
-        cardAnswer: payload
+        deck: payload.data,
+        index: 0
+      }
+    }
+    case 'LOGIN_ENTRY_FULFILLED': {
+      return {
+        ...state,
+        deck: payload.cards.data,
+        index: 0
       }
     }
     default: {
