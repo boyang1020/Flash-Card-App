@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateIndex } from '../FlashcardActions';
+import { updateIndex, updateCards } from '../FlashcardActions';
 import ViewMore from './ViewMore';
 import { View, Animated, PanResponder, Dimensions, LayoutAnimation, UIManager } from 'react-native';
 
@@ -11,12 +11,12 @@ const SWIPE_OUT_DURATION = 250;
 class Deck extends Component {
   static defaultProps = {
     onSwipeRight: (item, score) => { item.score = score },
-    onSwipeLeft: () => { }
+    onSwipeLeft: () => { },
+    data: []
   }
 
   constructor(props) {
     super(props);
-    console.log(props);
 
     const position = new Animated.ValueXY();
     const panResponder = PanResponder.create({
@@ -38,13 +38,13 @@ class Deck extends Component {
     this.state = { panResponder, position, index: 0 };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data !== this.props.data) {
-      //this.setState({ index: 0 });
-      const { dispatch } = this.props;
-      dispatch(updateIndex(0));
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.data !== this.props.data) {
+  //     //this.setState({ index: 0 });
+  //     const { dispatch } = this.props;
+  //     dispatch(updateIndex(0));
+  //   }
+  // }
 
   componentWillUpdate() {
     UIManager.setLayoutAnimationEnablesExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -63,15 +63,27 @@ class Deck extends Component {
     const { onSwipeLeft, onSwipeRight, data, dispatch } = this.props;
     const item = data[this.props.index]
     const inactive = [];
+    //If no score attached to card, set score to 0
+    item.score = item.score || 0;
 
     direction === 'right' ? onSwipeRight(item, item.score + 1, Math.min(item.score + 1, 2)) : onSwipeLeft(item);
     if (item.score === 2) {
       inactive.push(item);
     }
+    // Create a session for this user and this card, with the score.
+    const session = {
+      userId: this.props.userId,
+      cardId: item.id,
+      score: item.score
+    }
+    // If there's a sessionId associated with card, make sure we're updating the same session in the db
+    if (item.sessionId) {
+      session.id = item.sessionId;
+    }
     this.state.position.setValue({ x: 0, y: 0 })
     //this.setState({ index: this.state.index + 1 })
     dispatch(updateIndex(this.props.index + 1))
-    
+    dispatch(updateCards(this.props.userId, session))
   }
 
   resetPosition() {
@@ -96,9 +108,12 @@ class Deck extends Component {
   }
 
   renderCards() {
-    const { dispatch } = this.props;
     if (this.props.index >= this.props.data.length) {
-      return <ViewMore />;
+      return <ViewMore 
+      sessionId={this.props.sessionId}
+      userId={this.props.userId}
+      cardId={this.props.cardId}
+      data={this.props.data}/>;
     }
 
     return this.props.data.map((item, i) => {
@@ -141,5 +156,9 @@ const styles = {
     borderRadius: 20,
   }
 };
-
-export default connect()(Deck);
+const mapStateToProps = (state) => {
+  return {
+    userId: state.login.accessToken.userId
+  }
+}
+export default connect(mapStateToProps)(Deck);

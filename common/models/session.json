@@ -6,17 +6,20 @@
     "validateUpsert": true
   },
   "properties": {
-    "cards": {
-      "type": "array",
+    "score": {
+      "type": "number",
       "required": true
     }
   },
   "validations": [],
   "relations": {
     "card": {
-      "type": "hasMany",
-      "model": "card",
-      "foreignKey": "card"
+      "type": "belongsTo",
+      "model": "card"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user"
     }
   },
   "acls": [],

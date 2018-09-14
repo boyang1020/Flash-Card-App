@@ -2,22 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Card, Button } from 'react-native-elements';
-import { moreCards, updateIndex } from '../FlashcardActions';
+import { moreCards, addCard } from '../FlashcardActions';
 
 class ViewMore extends React.Component {
-  loadMoreCards = (newDeck) => {
-    const { dispatch } = this.props;
-    dispatch(moreCards(newDeck));
+  loadMoreCards = () => {
+    const { dispatch, userId, sessionId } = this.props;
+    dispatch(moreCards(userId));
   }
 
   render() {
-    const { newDeck } = this.props;
+    const { userId, deck, cardId, sessionId } = this.props;
     return (
       <Card title="All Done">
         <Text style={{ marginBottom: 10 }}>
         </Text>
         <Button
-          onPress={() => { this.loadMoreCards(newDeck) }}
+          onPress={() => { this.loadMoreCards(userId, cardId, sessionId) }}
           backgroundColor='#03a9f4'
           title='Get More' />
       </Card >

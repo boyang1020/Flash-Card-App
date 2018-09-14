@@ -13,14 +13,16 @@
     "answer": {
       "type": "string",
       "required": true
-    },
-    "score": {
-      "type": "number",
-      "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "users": {
+      "type": "hasMany",
+      "model": "session",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

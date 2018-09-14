@@ -5,7 +5,6 @@ import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
 import CardInfo from './src/CardInfo';
 import Origin from '../../assets/images/originLogo.png';
-import ViewMore from './src/ViewMore';
 
 class App extends React.Component {
   state = {
@@ -14,18 +13,21 @@ class App extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const { deck } = this.props;
+    const { deck, userId, cardId, sessionId } = this.props;
     return (
       <View style={styles.container}>
-          <TouchableOpacity onPress={() => navigate('Dashboard')}>
-          <Image style={styles.originImage} source={Origin}/>
+        <TouchableOpacity onPress={() => navigate('Dashboard')}>
+          <Image style={styles.originImage} source={Origin} />
         </TouchableOpacity>
         <Deck style={styles.deckstyle}
+        sessionId={sessionId}
+          cardId={cardId}
+          userId={userId}
           index={this.props.index}
           data={deck}
           renderCard={item => <CardInfo item={item} />}
         />
-          <Text style={styles.text2}>
+        <Text style={styles.text2}>
           Origin Code Academy LLC
           </Text>
       </View>
@@ -45,15 +47,15 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     paddingBottom: 300,
     alignSelf: "center",
-    },
-    text: {
-      fontFamily: 'AvenirNext-Regular',
-    },
-    text2:{
-      fontFamily: 'AvenirNext-Regular',
-      textAlign: 'center',
-      marginTop: 455,
-    }
+  },
+  text: {
+    fontFamily: 'AvenirNext-Regular',
+  },
+  text2: {
+    fontFamily: 'AvenirNext-Regular',
+    textAlign: 'center',
+    marginTop: 455,
+  }
 });
 
 export default App;

@@ -1,6 +1,6 @@
 {
   "name": "user",
-  "base": "PersistedModel",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -25,13 +25,8 @@
   },
   "validations": [],
   "relations": {
-    "session": {
+    "cards": {
       "type": "hasMany",
-      "model": "session",
-      "foreignKey": ""
-    },
-    "sessions": {
-      "type": "belongsTo",
       "model": "session",
       "foreignKey": ""
     }
