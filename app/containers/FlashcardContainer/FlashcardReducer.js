@@ -18,14 +18,6 @@ export default function FlashcardReducer(state = defaultState, action) {
       }
     }
     case 'UPDATE_CARDS_FULFILLED': {
-      // payload = {
-      //  data: {
-      //    "score": 1,
-      //    "id": "5b99dd643a6f776b95ed93c8",
-      //    "userId": "5b99d1dad0e34362d4abd280",
-      //    "cardId": "5b99d67f082f3166d27f8a8e"
-      //  }
-      // }
       //Inside of our card deck, find the card with the same ID as our session
       const index = state.deck.findIndex(e => e.id === payload.data.cardId);
       
