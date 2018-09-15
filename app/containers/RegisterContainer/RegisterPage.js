@@ -83,7 +83,7 @@ class RegisterContainer extends React.Component {
           <FormLabel>LAST NAME</FormLabel>
           <FormInput onChangeText={this.handleLastNameInput} autoCorrect={false} />
           <FormLabel>EMAIL</FormLabel>
-          <FormInput onChangeText={this.handleEmailInput} autoCorrect={false} />
+          <FormInput keyboardType="email-address" onChangeText={this.handleEmailInput} autoCorrect={false} />
           <FormLabel>PASSWORD</FormLabel>
           <FormInput
             autoCorrect={false}

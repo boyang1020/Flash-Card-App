@@ -45,7 +45,7 @@ export default class LoginPage extends React.Component {
         />
         <View style={styles.formContainer}>
           <FormLabel>EMAIL</FormLabel>
-          <FormInput onChangeText={this.emailLogin} />
+          <FormInput keyboardType="email-address" onChangeText={this.emailLogin} />
           <FormLabel>PASSWORD</FormLabel>
           <FormInput onChangeText={this.passwordLogin} secureTextEntry={true} />
         </View>
