@@ -35,7 +35,7 @@ export function registerEntry(registerObj) {
   return {
     type: 'SIGN_UP_ENTRY',
     payload: axios
-      .post('https://159d024d.ngrok.io/api/users', registerObj)
+      .post('http://0d03566e.ngrok.io/api/users', registerObj)
       .then(res => {return res.data})
       .catch(err => {console.log(err)})
   }

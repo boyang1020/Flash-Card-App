@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FormLabel, FormInput, Button, Icon } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation';
 import Origin from '../../assets/images/originLogo.png';
@@ -39,10 +39,9 @@ export default class LoginPage extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Image
-          source={Origin}
-          style={styles.originImage}
-        />
+        <TouchableOpacity onPress={() => navigate('Home')}>
+          <Image style={styles.originImage} source={Origin} />
+        </TouchableOpacity>
         <View style={styles.formContainer}>
           <FormLabel>EMAIL</FormLabel>
           <FormInput keyboardType="email-address" onChangeText={this.emailLogin} />

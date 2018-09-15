@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import { Image, StyleSheet, Text, View, ScrollView, ListView } from 'react-native';
+import { Image, StyleSheet, Text, View, ScrollView, ListView, TouchableOpacity } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import Origin from '../assets/images/originLogo.png';
 import flashcard from '../assets/images/flashcard.png';
@@ -30,10 +30,9 @@ export default class TutorialPage extends React.Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Image
-            source={Origin}
-            style={styles.originImage}
-          />
+        <TouchableOpacity onPress={() => navigate('Dashboard')}>
+          <Image style={styles.originImage} source={Origin} />
+        </TouchableOpacity>
           <Text style={styles.welcome}>
             Welcome to the Origin Flash Card App!
           </Text>

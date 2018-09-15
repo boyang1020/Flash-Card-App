@@ -7,7 +7,8 @@ import {
   TextInput,
   Linking,
   Alert,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from "react-native";
 import {
   FormLabel,
@@ -73,10 +74,9 @@ class RegisterContainer extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Image
-          source={Origin}
-          style={styles.originImage}
-        />
+       <TouchableOpacity onPress={() => navigate('Home')}>
+          <Image style={styles.originImage} source={Origin} />
+        </TouchableOpacity>
         <View style={styles.formContainer}>
           <FormLabel>FIRST NAME </FormLabel>
           <FormInput onChangeText={this.handleFirstNameInput} autoCorrect={false} />
