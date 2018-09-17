@@ -1,16 +1,1 @@
-{
-  "db": {
-    "name": "db",
-    "connector": "memory"
-  },
-  "MongoDB": {
-    "host": "",
-    "port": 27017,
-    "url": "",
-    "database": "",
-    "password": "",
-    "name": "MongoDB",
-    "user": "",
-    "connector": "mongodb"
-  }
-}
+{ }
