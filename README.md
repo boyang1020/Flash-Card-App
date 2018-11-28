@@ -49,3 +49,6 @@ npm install axios
 
 Ngrok
 https://ngrok.com/download
+
+
+This App is the final project of Team Aggresive Squid(Jamie, Ella, BO, JP & Eric) from Origin Code Academy.
